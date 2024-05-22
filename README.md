@@ -22,6 +22,11 @@ Use the `Selector` knob to control which track or chain is soloed.
 
 Press the `Enabled` button to toggle the device off to un-solo all tracks.
 
+## FAQ
+
+### I can't get it to work with my instrument / effect rack! Halp!?
+Ensure you have put the Chiastic Solo device *after* the rack, then press the `Refresh` button.
+
 ## TODO
 
 - ...
