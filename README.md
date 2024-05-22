@@ -12,7 +12,7 @@ I had the idea to make this while working on an album project. I had a Live proj
 
 ## Changelog
 
-- 2024-05-22 [v1](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases/download/v3/ChiasticSolo.v3.amxd) - Initial release.
+- 2024-05-22 [v1](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases/download/v1/ChiasticSolo-v1.amxd) - Initial release.
 
 ## Usage
 
