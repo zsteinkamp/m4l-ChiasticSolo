@@ -12,6 +12,7 @@ I had the idea to make this while working on an album project. I had a Live proj
 
 ## Changelog
 
+- 2024-10-29 [v2](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases/download/v2/ChiasticSolo-v2.amxd) - Add non-blocking telemetry ping on load. Does not send any identifying information, only the plugin name, the local computer name, type of computer, and CPU type. I just want to see which plugins are used the most.
 - 2024-05-22 [v1](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases/download/v1/ChiasticSolo-v1.amxd) - Initial release.
 
 ## Usage
