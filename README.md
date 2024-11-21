@@ -1,12 +1,16 @@
 # Chiastic Solo
 
-## ------------------------
-## NOTE NOTE NOTE NOTE NOTE
-## ------------------------
+```
+------------------------
+NOTE NOTE NOTE NOTE NOTE
+------------------------
+```
 ## This is not working with Live 12. I have filed a bug report with Ableton.
-## ------------------------
-## NOTE NOTE NOTE NOTE NOTE
-## ------------------------
+```
+------------------------
+NOTE NOTE NOTE NOTE NOTE
+------------------------
+```
 
 Chiastic Solo is a Max for Live device that lets you control which track in a group or rack is soloed. It can handle up to 32 chains / tracks.
 
