@@ -1,17 +1,5 @@
 # Chiastic Solo
 
-```
-------------------------
-NOTE NOTE NOTE NOTE NOTE
-------------------------
-```
-## This is not working with Live 12. I have filed a bug report with Ableton.
-```
-------------------------
-NOTE NOTE NOTE NOTE NOTE
-------------------------
-```
-
 Chiastic Solo is a Max for Live device that lets you control which track in a group or rack is soloed. It can handle up to 32 chains / tracks.
 
 ![How it Looks](images/device.gif)
@@ -21,6 +9,18 @@ I had the idea to make this while working on an album project. I had a Live proj
 ## Installation
 
 [Download the .amxd file from the latest release](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases) or clone this repository, and drag the `ChiasticSolo.amxd` device into a track in Ableton Live.
+
+### LIVE 12 USERS TAKE NOTE!
+
+Live 12 changed the UI behavior when a track is soloed to highlight or focus that track. This makes using ChiasticSolo impossible. To fix it, you can add this line to your `options.txt` file:
+
+```
+-NoHighlightOnSolo
+```
+
+(the leading hypen '-' is essential). 
+
+To find where to create the `options.txt` file for your operating system, [read this article on options.txt from Ableton](https://help.ableton.com/hc/en-us/articles/6003224107292-Options-txt-file).
 
 ## Changelog
 
