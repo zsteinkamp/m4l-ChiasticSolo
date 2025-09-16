@@ -24,6 +24,7 @@ To find where to create the `options.txt` file for your operating system, [read 
 
 ## Changelog
 
+- 2025-09-16 [v3](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases/download/v3/ChiasticSolo-v3.amxd) - Allows the Selector to be mapped to a MIDI controller or controlled by a Macro dial in a rack. Fixed a bug that prevented child track detection if placed inside a rack.
 - 2024-10-29 [v2](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases/download/v2/ChiasticSolo-v2.amxd) - Add non-blocking telemetry ping on load. Does not send any identifying information, only the plugin name, the local computer name, type of computer, and CPU type. I just want to see which plugins are used the most.
 - 2024-05-22 [v1](https://github.com/zsteinkamp/m4l-ChiasticSolo/releases/download/v1/ChiasticSolo-v1.amxd) - Initial release.
 
@@ -43,7 +44,3 @@ Ensure you have put the Chiastic Solo device *after* the rack, then press the `R
 ## TODO
 
 - ...
-
-## Contributing
-
-I'd love it if others extended this device. If you would like to contribute, simply fork this repo, make your changes, and open a pull request and I'll have a look.

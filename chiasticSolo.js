@@ -1,17 +1,19 @@
 autowatch = 1
 var MAX_TRACKS = 32
 inlets = 1
-outlets = 3
+outlets = 4
 
 var debugLog = false
 
 setinletassist(0, '<Bang> to initialize, <Float> to fade.')
 OUTLET_STATUS = 0
-OUTLET_VAL = 1
+OUTLET_SOLO = 1
 OUTLET_NUM = 2
+OUTLET_VAL = 3
 setoutletassist(OUTLET_STATUS, '<String> Status message to display.')
-setoutletassist(OUTLET_VAL, '<chain idx, val> Volume value for given chain.')
+setoutletassist(OUTLET_SOLO, '<chain idx, val> Solo state for given chain.')
 setoutletassist(OUTLET_NUM, '<num_chains> number of chains mapped.')
+setoutletassist(OUTLET_VAL, '<val> Active chain number.')
 
 function debug() {
   if (debugLog) {
@@ -44,11 +46,16 @@ function enabled(val) {
 }
 
 function fader(val) {
-  if (val > 0) {
-    val -= 1
+  if (state.numChains === 0) {
+    return
   }
-  debug('FADER: ' + val)
-  state.val = val
+  //debug('FADER: ' + val)
+  if (val == 1) {
+    state.val = state.numChains - 1
+  } else {
+    state.val = Math.floor(state.numChains * val)
+  }
+  outlet(OUTLET_VAL, state.val + 1)
   updateSolos()
 }
 
@@ -59,10 +66,10 @@ function updateSolos() {
     }
     if (state.enabled && i === state.val) {
       state.chains[i].set('solo', 1)
-      outlet(OUTLET_VAL, [i + 1, 1])
+      outlet(OUTLET_SOLO, [i + 1, 1])
     } else {
       state.chains[i].set('solo', 0)
-      outlet(OUTLET_VAL, [i + 1, 0])
+      outlet(OUTLET_SOLO, [i + 1, 0])
     }
   }
 }
@@ -115,7 +122,21 @@ function getRackChainPaths(thisDevice, trackPaths) {
 }
 
 function getGroupTrackPaths(thisDevice, trackPaths) {
-  var thisTrack = new LiveAPI(thisDevice.get('canonical_parent'))
+  var pathArr = thisDevice.path.split(' ')
+  while (pathArr.length > 2 && !pathArr.join(' ').match(/tracks \d+$/)) {
+    pathArr.pop()
+    debug('INTER: ' + pathArr.join(' '))
+  }
+
+  var path = pathArr.join(' ')
+  debug('PATH ' + path)
+
+  if (pathArr.length === 2) {
+    debug('OOppsssiiieee')
+    return
+  }
+
+  var thisTrack = new LiveAPI(path)
   if (thisTrack.get('is_foldable')) {
     // THIS IS A GROUP TRACK
     //debug('GROUP TRACK')
