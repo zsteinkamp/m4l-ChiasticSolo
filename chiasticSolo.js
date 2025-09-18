@@ -30,6 +30,7 @@ debug('reloaded')
 var state = {
   val: 0,
   enabled: 1,
+  mute: 0,
   numChains: 0,
   chains: [],
 }
@@ -59,16 +60,46 @@ function fader(val) {
   updateSolos()
 }
 
+function mute(val) {
+  if (state.mute && !val) {
+    // going from mute to solo
+    for (var i = 0; i < state.numChains; i++) {
+      if (!state.chains[i]) {
+        continue
+      }
+      state.chains[i].set('mute', 0)
+    }
+  } else if (!state.mute && val) {
+    // going from solo to mute
+    for (var i = 0; i < state.numChains; i++) {
+      if (!state.chains[i]) {
+        continue
+      }
+      state.chains[i].set('solo', 0)
+    }
+  }
+  state.mute = val
+  updateSolos()
+}
+
 function updateSolos() {
   for (var i = 0; i < state.numChains; i++) {
     if (!state.chains[i]) {
       continue
     }
     if (state.enabled && i === state.val) {
-      state.chains[i].set('solo', 1)
+      if (state.mute) {
+        state.chains[i].set('mute', 0)
+      } else {
+        state.chains[i].set('solo', 1)
+      }
       outlet(OUTLET_SOLO, [i + 1, 1])
     } else {
-      state.chains[i].set('solo', 0)
+      if (state.mute) {
+        state.chains[i].set('mute', 1)
+      } else {
+        state.chains[i].set('solo', 0)
+      }
       outlet(OUTLET_SOLO, [i + 1, 0])
     }
   }
